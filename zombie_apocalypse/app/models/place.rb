@@ -1,13 +1,13 @@
 class Place < ActiveRecord::Base
   attr_accessible :has_food, :has_people, :has_weapon, :latitude, :longitude, :name, :zombie_probability
   
-  validates :name,  presence: true
-  validates :latitude,  presence: true
-  validates :longitude,  presence: true
+  validates :name,  :presence => { :message => "name is required" }
+  validates :latitude,  :presence => { :message => "latitude is required" }
+  validates :longitude,  :presence => { :message => "longitude is required" }
   validates :has_food, :inclusion => {:in => [true, false]}
   validates :has_people, :inclusion => {:in => [true, false]}
   validates :has_weapon, :inclusion => {:in => [true, false]}
-  validates :zombie_probability,  presence: true
+  validates :zombie_probability,  :presence => { :message => "zombie_probability is required" }
   validate :zombie_probability_is_correct
 
   def zombie_probability_is_correct

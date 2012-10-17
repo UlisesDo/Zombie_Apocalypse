@@ -1,83 +1,36 @@
 class UsersController < ApplicationController
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
-  end
-
-  # GET /users/1
-  # GET /users/1.json
-  def show
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
-  end
-
-  # GET /users/new
-  # GET /users/new.json
-  def new
-    @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user }
-    end
-  end
-
-  # GET /users/1/edit
-  def edit
-    @user = User.find(params[:id])
-  end
-
-  # POST /users
-  # POST /users.json
+  # POST /users/create
+  # POST /users/create.json
   def create
+    # I am not sure of the name of the object received in params by the API, it may be person or user. 
+    # I am assumming it's user for now
     @user = User.new(params[:user])
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
+        format.json { render :json => { :status => "OK", :response => {:created => true} }}
       else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render :json => { :status => "Error", :response => {} }}
       end
     end
   end
 
-  # PUT /users/1
-  # PUT /users/1.json
+  # PUT /users/update
+  # PUT /users/update.json
   def update
-    @user = User.find(params[:id])
-
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      user_id_present = true
+    end
+    
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
+      if user_id_present && @user.update_attributes(params[:user])
+        format.json { render :json => { :status => "OK", :response => {:updated => true} }}
       else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render :json => { :status => "Error", :response => {} }}
       end
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
-    end
-  end
 end
