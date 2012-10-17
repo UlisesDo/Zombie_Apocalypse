@@ -1,7 +1,9 @@
 ZombieApocalypse::Application.routes.draw do
-  resources :places
+  resources :places, :only => [:create, :update]
 
-  resources :users
+  resources :users, :only => [:create, :update]
+  
+  match '/recommendations', to: 'places#recommendations', via: :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
