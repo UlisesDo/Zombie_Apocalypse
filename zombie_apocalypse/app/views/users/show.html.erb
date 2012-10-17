@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @user.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @user.longitude %>
+</p>
+
+<p>
+  <b>Has weapon:</b>
+  <%= @user.has_weapon %>
+</p>
+
+<p>
+  <b>Is hungry:</b>
+  <%= @user.is_hungry %>
+</p>
+
+<p>
+  <b>Is alone:</b>
+  <%= @user.is_alone %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
