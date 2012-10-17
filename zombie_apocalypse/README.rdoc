@@ -147,3 +147,8 @@ Extra points (not required)
 ● If necessary, use a framework/library/gem to perform heavy tasks on background.
 ● Create “places/update” API call. The response should follow the format of
 “users/update”.
+
+================================
+
+The weights of the attributes for persons and places can be easily configured via the Rails::Application singleton, 
+in application.rb

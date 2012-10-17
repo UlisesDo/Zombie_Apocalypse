@@ -1,10 +1,10 @@
 ZombieApocalypse::Application.routes.draw do
  
-  match '/recommendations', to: 'places#recommend_a_place', via: :get
-  match '/places/create', to: 'places#create', via: :post
-  match '/users/create', to: 'users#create', via: :post
-  match '/users/update', to: 'users#update', via: :put
-  match '/places/update', to: 'places#update', via: :put
+  match '/recommendations', to: 'places#recommend_a_place', via: :get, defaults: {format: :json}
+  match '/places/create', to: 'places#create', via: :post, defaults: {format: :json}
+  match '/users/create', to: 'users#create', via: :post, defaults: {format: :json}
+  match '/users/update', to: 'users#update', via: :put, defaults: {format: :json}
+  match '/places/update', to: 'places#update', via: :put, defaults: {format: :json}
 
   # resources :places, :only => [:create, :update]
   # resources :users, :only => [:create, :update]

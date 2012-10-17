@@ -3,12 +3,16 @@ class PlacesController < ApplicationController
   # POST /places/create
   # POST /places/create.json
   def create
-    # I am not sure of the name of the object received in params by the API, it may be safe_house or place. 
-    # I am assumming it's place for now
-    @place = Place.new(params[:place])
+    @safe_house = Place.new( :name => params[:name],
+                                      :zombie_probability => params[:zombie_probability],
+                                      :latitude => params[:latitude],
+                                      :longitude => params[:longitude],
+                                      :has_weapons => params[:has_weapons],
+                                      :has_food => params[:has_food],
+                                      :has_people => params[:has_people])
 
     respond_to do |format|
-      if @place.save
+      if @safe_house.save
         format.json { render :json => { :status => "OK", :response => {:created => true} }}
       else
         format.json { render :json => { :status => "Error", :response => {} }}
@@ -18,15 +22,21 @@ class PlacesController < ApplicationController
 
   # PUT /places/update
   # PUT /places/update.json
-  # user_id is passed as a parameter
+  # place_id is passed as a parameter
   def update
     if params[:place_id]
-      @place = Place.find(params[:place_id])
+      @safe_house = Place.find(params[:place_id])
       place_id_present = true
     end
 
     respond_to do |format|
-      if place_id_present && @place.update_attributes(params[:place])
+      if place_id_present && @safe_house.update_attributes( :name => params[:name],
+                                                                    :zombie_probability => params[:zombie_probability],
+                                                                    :latitude => params[:latitude],
+                                                                    :longitude => params[:longitude],
+                                                                    :has_weapons => params[:has_weapons],
+                                                                    :has_food => params[:has_food],
+                                                                    :has_people => params[:has_people])
         format.json { render :json => { :status => "OK", :response => {:updated => true} }}
       else
         format.json { render :json => { :status => "Error", :response => {} }}
