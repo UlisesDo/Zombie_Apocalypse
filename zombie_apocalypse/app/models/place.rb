@@ -1,7 +1,7 @@
 class Place < ActiveRecord::Base
   attr_accessible :has_food, :has_people, :has_weapon, :latitude, :longitude, :name, :zombie_probability
   
-  validates :name,  :presence => { :message => "name is required" }
+  validates :name, :length => { minimum: 3 }, :presence => { :message => "name is required" }
   validates :latitude,  :presence => { :message => "latitude is required" }
   validates :longitude,  :presence => { :message => "longitude is required" }
   validates :has_food, :inclusion => {:in => [true, false]}

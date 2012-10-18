@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :has_weapon, :is_alone, :is_hungry, :latitude, :longitude, :name
   
-  validates :name,  :presence => { :message => "name is required" }
+  validates :name, :length => { minimum: 3 }, :presence => { :message => "name is required" }
   validates :latitude,  :presence => { :message => "latitude is required" }
   validates :longitude, :presence => { :message => "longitude is required" }
   validates :is_hungry, :inclusion => {:in => [true, false]}
