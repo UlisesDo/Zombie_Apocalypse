@@ -150,5 +150,4 @@ Extra points (not required)
 
 ================================
 
-The weights of the attributes for persons and places can be easily configured via the Rails::Application singleton, 
-in application.rb
+The weights of the attributes for persons and places can be easily adjusted via constants in config/environment.rb

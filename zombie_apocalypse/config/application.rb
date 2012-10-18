@@ -12,17 +12,6 @@ end
 module ZombieApocalypse
   class Application < Rails::Application
     
-    config.access_request.weight_user_location = 4
-    config.access_request.weight_user_armory = 3
-    config.access_request.weight_user_alone = 2
-    config.access_request.weight_user_hungry = 1
-    
-    config.access_request.weight_place_zombie_probability = 5
-    config.access_request.weight_place_location = 4
-    config.access_request.weight_place_armory = 3
-    config.access_request.weight_place_food = 2
-    config.access_request.weight_place_people = 1
-    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
