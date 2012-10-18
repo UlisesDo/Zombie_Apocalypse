@@ -1,4 +1,4 @@
-This is a practice example for Fever. This is a example solution in Ruby on Rails, for the following problem:
+# This is a practice example for Fever. This is a example solution in Ruby on Rails, for the Zombie Apocalypse problem:
 
 It seems that the Mayans were right and 2012 is going to end abruptly. There is not much
 information about how it started, but all the stories about zombies have now became real. You
@@ -9,8 +9,10 @@ will recommend the best place to go in case of emergency, based on the user’s 
 As you can imagine, you are in charge of the server side and you should keep in mind that the
 more accurate your recommendations are based on their preferences and individual situations,
 the more friends you will save from brain buffet!
-Objects
-Safe house
+
+# Objects
+
+# Safe house
 A “Safe House” represents a place where your friends have been in the past. It is defined by:
 ● Name: name of the place.
 ● Probability of zombie appearance: normalized (0.0 1.0).
@@ -18,15 +20,16 @@ A “Safe House” represents a place where your friends have been in the past. 
 ● Armory: indicates if there are weapons inside the house.
 ● Food: indicates if there is food inside the house.
 ● People: indicates if the place is inhabited by other people.
-Person
+# Person
 A “Person” represents each one of your friends. It is defined by:
 ● Name: name of the person.
 ● Location (latitude/longitude): latitude and longitude coordinates of the person.
 ● Armory: indicates if the person has a weapon.
 ● Hungry: indicates if the person is hungry.
 ● Alone: indicates if the person is alone or with a group.
-API definition
-http://localhost:10000/places/create (POST)
+
+# API definition
+# http://localhost:10000/places/create (POST)
 Stores a place into the database.
 Input parameters
 ● name [required]: name of the place.
@@ -49,7 +52,7 @@ Error
 “status” : “Error”,
 “response” : {}
 }
-http://localhost:10000/users/create (POST)
+# http://localhost:10000/users/create (POST)
 Stores an user into the database.
 Input parameters
 ● name [required]: Name of the user.
@@ -70,7 +73,7 @@ Error
 “status” : “Error”,
 “response” : {}
 }
-http://localhost:10000/users/update (PUT)
+# http://localhost:10000/users/update (PUT)
 Updates user information.
 Input parameters
 ● user_id [required]: ID of the user.
@@ -91,7 +94,7 @@ Error
 “status” : “Error”,
 “response” : {}
 }
-http://localhost:10000/recommendations (GET)
+# http://localhost:10000/recommendations (GET)
 Gets the list of places sort by the recommendation algorithm.
 Input parameters
 ● user_id [required]: ID of the user.
@@ -133,14 +136,16 @@ Error
 “status” : “Error”,
 “response” : {}
 }
-Requirements
+
+# Requirements
 ● Use MongoDB or MySQL (persistence strategy).
 ● You can use any framework/library/gem provided by the standard ruby/python libraries.
 Try to not use any other 3rd party framework/library/gem.
 ● The “weight” of each user or place attribute should be easy to configure. In this first
 approach, you should pick the best ones.
 ● An User Interface is NOT necessary.
-Extra points (not required)
+
+#Extra points (not required)
 ● Include validations for the input parameters.
 ● In case of error, modify the “Error” status message for a more verbose one.
 ● Test all the platform.

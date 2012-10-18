@@ -62,6 +62,8 @@ class PlacesController < ApplicationController
       # of the place which is in the 2nd element.
       array_values_places = calculate_value_of_places(@person)
       @sorted_array_values_places = array_values_places.sort_by { |e| e[0] }.reverse
+      
+      debugger
 
       respond_to do |format|
         if wrong_user_id
