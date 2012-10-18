@@ -28,9 +28,5 @@ describe Place do
     before { @place.latitude = "" }
     it { should_not be_valid }
   end
-  describe "when zombie_probability is not present" do
-    before { @place.zombie_probability = "" }
-    it { should_not be_valid }
-  end
   
 end
