@@ -153,6 +153,11 @@ approach, you should pick the best ones.
 ● Create “places/update” API call. The response should follow the format of
 “users/update”.
 
-================================
+# My personal comments
+● 2 models and 2 controllers have been created.
+● The routes are configured to match the ones of the specs.
+● The weights of the attributes for places can be easily adjusted via constants in config/environment.rb
+● I have set some values for those weights that give reasonable good results for the examples I had in mind and tested it with
+● I assummed that the coordinates are given in meters (m)
+● I have done most of the extra points in spare time, but could not do it all (specially tests, which I would like to have had more time for)
 
-The weights of the attributes for persons and places can be easily adjusted via constants in config/environment.rb
