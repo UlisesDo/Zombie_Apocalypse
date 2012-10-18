@@ -51,21 +51,26 @@ class PlacesController < ApplicationController
     # 2- Calculate the total VALUE that each place has for that given user (algorithm)
     # 3- Sort by value the array of recommended places
     # 4- Return the data for the user and the array of recommended places in the specified format 
-    @person = User.find(params[:user_id])
-    wrong_user_id = true unless @person
-    
-    # The algorithm to calculate the total VALUE of each place returns an array of arrays, where the 1st element is the value
-    # of the place which is in the 2nd element.
-    array_values_places = calculate_value_of_places(@person)
-    @sorted_array_values_places = array_values_places.sort_by { |e| e[0] }.reverse
-    
-    respond_to do |format|
-      if wrong_user_id
-        format.json { render :json => { :status => "Error", :response => {} }}
-      else
-        render :file => "recommend_a_place.json.erb", :content_type => 'application/json'
-      end
+    if params[:user_id]
+      @person = User.find(params[:user_id])
+    else 
+      wrong_user_id = true
     end
+    
+    unless wrong_user_id
+      # The algorithm to calculate the total VALUE of each place returns an array of arrays, where the 1st element is the value
+      # of the place which is in the 2nd element.
+      array_values_places = calculate_value_of_places(@person)
+      @sorted_array_values_places = array_values_places.sort_by { |e| e[0] }.reverse
+
+      respond_to do |format|
+        if wrong_user_id
+          format.json { render :json => { :status => "Error", :response => {} }}
+        else
+          format.json { render :file => "places/recommend_a_place.json.erb", :content_type => 'application/json' }
+        end
+      end
+    end    
     
   end
   

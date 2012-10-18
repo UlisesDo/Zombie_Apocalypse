@@ -13,17 +13,17 @@
 			alone: <%= @person.is_alone %>
 		},
 		places : [
-			<% @sorted_array_values_places.each_with_index do |place, index| %>
+			<% @sorted_array_values_places.each_with_index do |value_place_array, index| %>
 				{
-				place_id: <%= place.id %>,
-				name: <%= place.name %>,
+				place_id: <%= value_place_array[1].id %>,
+				name: <%= value_place_array[1].name %>,
 				location: {
-					latitude: <%= place.latitude %>,
-					longitude: <%= place.longitude %>
+					latitude: <%= value_place_array[1].latitude %>,
+					longitude: <%= value_place_array[1].longitude %>
 				},
-				armory: <%= place.has_weapon %>,
-				food: <%= place.has_food %>,
-				people: <%= place.has_people %>
+				armory: <%= value_place_array[1].has_weapon %>,
+				food: <%= value_place_array[1].has_food %>,
+				people: <%= value_place_array[1].has_people %>
 				<% if index < (@sorted_array_values_places.length - 1) %>
 					},
 				<% else %>
